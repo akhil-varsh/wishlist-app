@@ -50,7 +50,7 @@ A collaborative product wishlist application where users can create, manage, and
 
 1. Clone the repository:
 ```
-git clone https://github.com/yourusername/wishlist-app.git
+git clone https://github.com/akhil-varsh/wishlist-app.git
 cd wishlist-app
 ```
 
@@ -96,82 +96,8 @@ npm start
 
 3. Open your browser and navigate to `http://localhost:3000`
 
-## Database Schema
-
-The application uses the following database tables:
-
-### profiles
-- id (uuid, primary key, references auth.users)
-- full_name (text)
-- email (text, unique)
-- created_at (timestamp)
-
-### wishlists
-- id (uuid, primary key)
-- name (text)
-- description (text)
-- created_by (uuid, references profiles)
-- created_at (timestamp)
-
-### wishlist_items
-- id (uuid, primary key)
-- wishlist_id (uuid, references wishlists)
-- product_id (integer)
-- product_title (text)
-- product_price (numeric)
-- product_image (text)
-- product_description (text)
-- product_category (text)
-- product_rating (jsonb)
-- added_by (uuid, references profiles)
-- added_at (timestamp)
-- is_manual (boolean, default false)
-
-### product_likes
-- id (uuid, primary key)
-- wishlist_item_id (uuid, references wishlist_items)
-- user_id (uuid, references profiles)
-- created_at (timestamp)
-
-### product_comments
-- id (uuid, primary key)
-- wishlist_item_id (uuid, references wishlist_items)
-- user_id (uuid, references profiles)
-- content (text)
-- created_at (timestamp)
-
-## API Endpoints
-
-### Authentication
-- POST /api/auth/signup - Register a new user
-- POST /api/auth/login - User login
-- POST /api/auth/logout - User logout
-- GET /api/auth/profile - Get user profile
-
-### Wishlists
-- GET /api/wishlists - Get all wishlists for the user
-- GET /api/wishlists/:id - Get a specific wishlist with items
-- POST /api/wishlists - Create a new wishlist
-- PUT /api/wishlists/:id - Update a wishlist
-- DELETE /api/wishlists/:id - Delete a wishlist
-- POST /api/wishlists/:id/invite - Invite a user to a wishlist
-
-### Products
-- GET /api/products/fakestore - Get products from FakeStore API
-- POST /api/products/wishlist/:wishlistId - Add a product to a wishlist
-- DELETE /api/products/wishlist/:wishlistId/:itemId - Remove a product from a wishlist
-
-### Likes and Comments
-- POST /api/products/wishlist/:wishlistId/:itemId/like - Like a product
-- DELETE /api/products/wishlist/:wishlistId/:itemId/like - Unlike a product
-- GET /api/products/wishlist/:wishlistId/:itemId/likes - Get all likes for a product
-- POST /api/products/wishlist/:wishlistId/:itemId/comment - Add a comment to a product
-- DELETE /api/products/wishlist/:wishlistId/:itemId/comment/:commentId - Delete a comment
-- GET /api/products/wishlist/:wishlistId/:itemId/comments - Get all comments for a product
 
 ## Future Improvements
-
-If I had more time, I would implement:
 
 - Real-time Updates: Add WebSocket support for real-time collaboration
 - Enhanced Security: Implement CSRF protection and rate limiting
@@ -182,6 +108,3 @@ If I had more time, I would implement:
 - Advanced Search: Implement more advanced filtering and search options
 - Testing: Add comprehensive unit and integration tests
 
-## License
-
-This project is licensed under the MIT License.
